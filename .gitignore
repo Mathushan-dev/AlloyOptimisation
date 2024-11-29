@@ -1,0 +1,65 @@
+# Build directories
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.vcxproj.user
+
+# Visual Studio specific
+.vs/
+
+# Rider specific
+.idea/
+
+# Backup and temporary files
+*.bak
+*.swp
+*~
+*.tmp
+*.log
+
+# Recycle Bin Files
+$RECYCLE.BIN/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Application Insights
+ApplicationInsights.config
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+# C# specific
+project.lock.json
+project.fragment.lock.json
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Entity Framework
+*.edmx.diagram
+*.edmx.sql
+
+# Visual Studio Code specific
+.vscode/
+
+# Others
+*.dll
+*.vsidx
+/.vs
+*.json
+*.exe
+/AlloyOptimisation.Tests/bin
+/AlloyOptimisation.Tests/obj
+/AlloyOptimisation/bin
+/AlloyOptimisation/obj
