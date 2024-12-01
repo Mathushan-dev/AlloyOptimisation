@@ -1,8 +1,5 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AlloyOptimisation.Helpers;
 using AlloyOptimisation.Models;
-using AlloyOptimisation.Helpers;
 
 namespace AlloyOptimisation.UnitTests.Helpers
 {
