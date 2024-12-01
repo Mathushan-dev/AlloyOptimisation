@@ -1,20 +1,35 @@
 ﻿namespace AlloyOptimisation.Models
 {
-    public class AlloySystem(double maxCost, Element baseElement)
+    public class AlloySystem(Element baseElement, List<Element>? elements = null)
     {
-        private readonly List<Element> _elements = new List<Element>();
+        private readonly List<Element> _elements = elements ?? [];
         private readonly Element _baseElement = baseElement;
-        private readonly double _maxCost = maxCost;
+
         public List<Element> Elements => _elements;
         public Element BaseElement => _baseElement;
-        public double MaxCost => _maxCost;
-        public void AddElement(Element element)
+
+        public void AddElement(Element elementToAdd)
         {
-            _elements.Add(element);
+            _elements.Add(elementToAdd);
         }
-        public void RemoveElement(Element element)
+
+        public void AddRangeOfElements(IEnumerable<Element> elementsToAdd)
         {
-            _elements.Remove(element);
+            foreach (Element elementToAdd in elementsToAdd)
+            {
+                _elements.Add(elementToAdd);
+            }
         }
+
+        public void RemoveElement(Element elementToRemove)
+        {
+            _elements.Remove(elementToRemove);
+        }
+
+        public void RemoveRangeOfElements(IEnumerable<Element> elementsToRemove)
+        {
+            _elements.RemoveAll(elementToRemove => elementsToRemove.Contains(elementToRemove));
+        }
+
     }
 }

@@ -17,16 +17,16 @@ namespace AlloyOptimisation.UnitTests.Helpers
         [Test]
         public void Should_calculate_total_cost_correctly()
         {
-            var calculator = new CostCalculator(_baseElement);
-            var elements = new List<KeyValuePair<Element, double>>
+            CostCalculator calculator = new CostCalculator(_baseElement);
+            List<KeyValuePair<Element, double>> elements = new List<KeyValuePair<Element, double>>
             {
                 new KeyValuePair<Element, double>(new Element("Carbon", 0.7, 100, 10, 20, 5), 10),
                 new KeyValuePair<Element, double>(new Element("Chromium", 0.8, 250, 5, 15, 5), 5)
             };
 
-            double cost = calculator.CalculateTotalCost(50, elements);
+            double totalCost = calculator.CalculateTotalCost(85, elements);
 
-            Assert.That(cost, Is.GreaterThan(0));
+            Assert.That(totalCost, Is.EqualTo(362.5));
         }
     }
 }

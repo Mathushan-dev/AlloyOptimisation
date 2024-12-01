@@ -4,13 +4,13 @@ using AlloyOptimisation.Models;
 
 namespace AlloyOptimisation.Functions
 {
-    public class AlloyOptimiser(Element baseElement, List<Element> otherElements, double maxCost) : IAlloyOptimiser
+    public class AlloyOptimiser(AlloySystem alloySystem, double maxCost) : IAlloyOptimiser
     {
-        private readonly Element _baseElement = baseElement;
-        private readonly List<Element> _otherElements = otherElements;
+        private readonly Element _baseElement = alloySystem.BaseElement;
+        private readonly List<Element> _otherElements = alloySystem.Elements;
         private readonly double _maxCost = maxCost;
-        private readonly CompositionGenerator _compositionGenerator = new CompositionGenerator(otherElements);
-        private readonly CostCalculator _costCalculator = new CostCalculator(baseElement);
+        private readonly CompositionGenerator _compositionGenerator = new CompositionGenerator(alloySystem.Elements);
+        private readonly CostCalculator _costCalculator = new CostCalculator(alloySystem.BaseElement);
 
         public (List<KeyValuePair<Element, double>> Composition, double TotalCreepResistance, double TotalCost) OptimiseAlloy()
         {
@@ -29,8 +29,7 @@ namespace AlloyOptimisation.Functions
 
                 if (totalCost <= _maxCost && totalCreepResistance > optimalTotalCreepResistance)
                 {
-                    optimalComposition = new List<KeyValuePair<Element, double>> { new KeyValuePair<Element, double> (_baseElement, baseElementPercentage) };
-                    optimalComposition.AddRange(composition);
+                    optimalComposition = [new KeyValuePair<Element, double> (_baseElement, baseElementPercentage), .. composition];
 
                     optimalTotalCreepResistance = totalCreepResistance;
                     optimalTotalCost = totalCost;

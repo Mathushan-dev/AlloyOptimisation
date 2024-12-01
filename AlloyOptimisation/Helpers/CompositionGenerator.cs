@@ -7,13 +7,16 @@ namespace AlloyOptimisation.Helpers
         private readonly List<Element> _elements = elements;
         public List<List<KeyValuePair<Element, double>>> GenerateAllCompositions()
         {
+            if (_elements.Count == 0) 
+                return [];
+
             List<List<double>> elementRanges = _elements
                 .Select(element => GenerateRange(element.MinPercent, element.MaxPercent, element.StepSize))
                 .ToList();
 
             List<List<double>> compositions = CartesianProduct(elementRanges);
 
-            List<List<KeyValuePair<Element, double>>> result = new List<List<KeyValuePair<Element, double>>>();
+            List<List<KeyValuePair<Element, double>>> result = [];
             foreach (List<double> composition in compositions)
             {
                 List<KeyValuePair<Element, double>> keyValuePairs = new List<KeyValuePair<Element, double>>();
@@ -26,16 +29,16 @@ namespace AlloyOptimisation.Helpers
 
             return result;
         }
-        private static List<double> GenerateRange(double min, double max, double step)
+        public static List<double> GenerateRange(double min, double max, double step)
         {
-            List<double> range = new List<double>();
+            List<double> range = [];
             for (double value = min; value <= max; value += step)
             {
                 range.Add(value);
             }
             return range;
         }
-        private static List<List<double>> CartesianProduct(List<List<double>> sequences)
+        public static List<List<double>> CartesianProduct(List<List<double>> sequences)
         {
             return sequences.Aggregate(
                 new List<List<double>> { new List<double>() },

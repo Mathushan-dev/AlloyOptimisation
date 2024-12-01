@@ -1,5 +1,4 @@
 ﻿using AlloyOptimisation.Models;
-using NUnit.Framework;
 
 namespace AlloyOptimisation.UnitTests.Models
 {
@@ -9,7 +8,7 @@ namespace AlloyOptimisation.UnitTests.Models
         [Test]
         public void Should_create_element_with_correct_properties()
         {
-            var element = new Element("Zinc", 0.6, 120, 5, 25, 5);
+            Element element = new Element("Zinc", 0.6, 120, 5, 25, 5);
 
             Assert.That(element.Name, Is.EqualTo("Zinc"));
             Assert.That(element.CreepCoefficient, Is.EqualTo(0.6));

@@ -2,14 +2,9 @@
 
 namespace AlloyOptimisation.Helpers
 {
-    public class CostCalculator
+    public class CostCalculator(Element baseElement)
     {
-        private readonly Element _baseElement;
-
-        public CostCalculator(Element baseElement)
-        {
-            _baseElement = baseElement;
-        }
+        private readonly Element _baseElement = baseElement;
 
         public double CalculateTotalCost(double baseElementPercentage, List<KeyValuePair<Element, double>> otherElements)
         {
