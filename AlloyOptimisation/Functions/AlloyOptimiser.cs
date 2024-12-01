@@ -4,6 +4,11 @@ using AlloyOptimisation.Models;
 
 namespace AlloyOptimisation.Functions
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AlloyOptimiser"/> class.
+    /// </summary>
+    /// <param name="alloySystem">The alloy system containing the base element and other elements to consider in the composition.</param>
+    /// <param name="maxCost">The maximum allowable cost per kilogram of the alloy.</param>
     public class AlloyOptimiser(AlloySystem alloySystem, double maxCost) : IAlloyOptimiser
     {
         private readonly Element _baseElement = alloySystem.BaseElement;
@@ -12,6 +17,17 @@ namespace AlloyOptimisation.Functions
         private readonly CompositionGenerator _compositionGenerator = new CompositionGenerator(alloySystem.Elements);
         private readonly CostCalculator _costCalculator = new CostCalculator(alloySystem.BaseElement);
 
+        /// <summary>
+        /// Finds the optimal alloy composition that maximises creep resistance within the given cost constraint.
+        /// </summary>
+        /// <returns>
+        /// A tuple containing:
+        /// <list type="bullet">
+        /// <item><description><see cref="List{T}"/>: The optimal composition as a list of element-percentage pairs.</description></item>
+        /// <item><description><see cref="double"/>: The maximum creep resistance achieved for the optimal composition.</description></item>
+        /// <item><description><see cref="double"/>: The total cost of the optimal composition.</description></item>
+        /// </list>
+        /// </returns>
         public (List<KeyValuePair<Element, double>> Composition, double TotalCreepResistance, double TotalCost) OptimiseAlloy()
         {
             List<KeyValuePair<Element, double>> optimalComposition = [];
