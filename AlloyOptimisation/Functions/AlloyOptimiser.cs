@@ -5,7 +5,7 @@ using AlloyOptimisation.Models;
 namespace AlloyOptimisation.Functions
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AlloyOptimiser"/> class.
+    /// Initialises a new instance of the <see cref="AlloyOptimiser"/> class.
     /// </summary>
     /// <param name="alloySystem">The alloy system containing the base element and other elements to consider in the composition.</param>
     /// <param name="maxCost">The maximum allowable cost per kilogram of the alloy.</param>
